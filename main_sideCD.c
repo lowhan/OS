@@ -118,7 +118,7 @@ void EXTI0_IRQHandler(void)
 	{	tms = SysTick->LOAD + 1;
 		n0 = HAL_GetTick();
 		t0 = tms - SysTick->VAL;
-		fu0 = n0 * 1000 + (t0 * 1000) / tms;
+		fu0 = n0 * 1000000 + (t0 * 1000000) / tms;          // nano second
 		pumpCcurrent = HAL_GetTick();
 		if((pumpCcurrent - pumpCprevious) > timeignore && pumpCflag == true)
 		{
@@ -128,7 +128,7 @@ void EXTI0_IRQHandler(void)
 		__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_0);
 		n1 = HAL_GetTick();
 		t1 = tms - SysTick->VAL;
-		fu1 = n1 * 1000 + (t1 * 1000) / tms;
+		fu1 = n1 * 1000000 + (t1 * 1000000) / tms;
 		it = fu1 - fu0;
 	}
 }
@@ -139,7 +139,7 @@ void EXTI1_IRQHandler(void)
 	{	tms = SysTick->LOAD + 1;
 		n0 = HAL_GetTick();
 		t0 = tms - SysTick->VAL;
-		fu0 = n0 * 1000 + (t0 * 1000) / tms;
+		fu0 = n0 * 1000000 + (t0 * 1000000) / tms;      
 		pumpCcurrent = HAL_GetTick();
 		if((pumpCcurrent - pumpCprevious) > timeignore && pumpCflag == false)
 		{
@@ -148,7 +148,7 @@ void EXTI1_IRQHandler(void)
 		}
 		n1 = HAL_GetTick();
 			t1 = tms - SysTick->VAL;
-			fu1 = n1 * 1000 + (t1 * 1000) / tms;
+			fu1 = n1 * 1000000 + (t1 * 1000000) / tms;
 			it = fu1 - fu0;
 		__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_1);
 	}
@@ -161,7 +161,7 @@ void EXTI2_IRQHandler(void)
 	{  tms = SysTick->LOAD + 1;
 		n0 = HAL_GetTick();
 		t0 = tms - SysTick->VAL;
-		fu0 = n0 * 1000 + (t0 * 1000) / tms;
+		fu0 = n0 * 1000000 + (t0 * 1000000) / tms;
 		pumpDcurrent = HAL_GetTick();
 		if((pumpDcurrent - pumpDprevious) > timeignore && pumpDflag == true)
 		{
@@ -170,7 +170,7 @@ void EXTI2_IRQHandler(void)
 		}
 		n1 = HAL_GetTick();
 			t1 = tms - SysTick->VAL;
-			fu1 = n1 * 1000 + (t1 * 1000) / tms;
+			fu1 = n1 * 1000000 + (t1 * 1000000) / tms;
 			it = fu1 - fu0;
 		__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_2);
 	}
@@ -183,7 +183,7 @@ void EXTI3_IRQHandler(void)
 	{   tms = SysTick->LOAD + 1;
 		n0 = HAL_GetTick();
 		t0 = tms - SysTick->VAL;
-		fu0 = n0 * 1000 + (t0 * 1000) / tms;
+		fu0 = n0 * 1000000 + (t0 * 1000000) / tms;
 		pumpDcurrent = HAL_GetTick();
 		if((pumpDcurrent - pumpDprevious) > timeignore && pumpDflag == false)
 		{
@@ -192,7 +192,7 @@ void EXTI3_IRQHandler(void)
 		}
 		n1 = HAL_GetTick();
 			t1 = tms - SysTick->VAL;
-			fu1 = n1 * 1000 + (t1 * 1000) / tms;
+			fu1 = n1 * 1000000 + (t1 * 1000000) / tms;
 			it = fu1 - fu0;
 		__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_3);
 
@@ -205,11 +205,11 @@ void EXTI9_5_IRQHandler(void)
 		{	tms = SysTick->LOAD + 1;
 			n0 = HAL_GetTick();
 			t0 = tms - SysTick->VAL;
-			fu0 = n0 * 1000 + (t0 * 1000) / tms;
+			fu0 = n0 * 1000000 + (t0 * 1000000) / tms;
 			pumpstop = true;
 			n1 = HAL_GetTick();
 			t1 = tms - SysTick->VAL;
-			fu1 = n1 * 1000 + (t1 * 1000) / tms;
+			fu1 = n1 * 1000000 + (t1 * 1000000) / tms;
 			it = fu1 - fu0;
 		}
 	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_5);

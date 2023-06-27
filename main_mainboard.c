@@ -182,7 +182,7 @@ void EXTI0_IRQHandler(void)
 	{
 		n0 = HAL_GetTick();
 		t0 = tms - SysTick->VAL;
-		fu0 = n0 * 1000000 + (t0 * 1000000) / tms;
+		fu0 = n0 * 1000000 + (t0 * 1000000) / tms;      // nano second
 		pumpBflag = true;
 		__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_0);
 		n1 = HAL_GetTick();
@@ -472,7 +472,7 @@ void pumpA_Thread(void *argument)
 		tms = SysTick->LOAD + 1;
 		m0 = HAL_GetTick();
 		u0 = tms - SysTick->VAL;
-		et0 = m0 * 1000 + (u0 * 1000) / tms;
+		et0 = m0 * 1000 + (u0 * 1000) / tms;                        // micro second
 		osSemaphoreAcquire(SemAHandle, osWaitForever);
 		if(pumpAflag == true && fuel > 0)							// ready to send fuel
 		{

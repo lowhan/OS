@@ -120,7 +120,7 @@ void EXTI0_IRQHandler(void)
 		tms = SysTick->LOAD + 1;
 		n0 = HAL_GetTick();
 		t0 = tms - SysTick->VAL;
-		fu0 = n0 * 1000000 + (t0 * 1000000) / tms;
+		fu0 = n0 * 1000000 + (t0 * 1000000) / tms;              // nano second
 		if((pumpAcurrent - pumpAprevious) > timeignore && pumpAflag == true)
 		{
 			pumpAprevious = pumpAcurrent;
@@ -186,7 +186,7 @@ void EXTI3_IRQHandler(void)
 		tms = SysTick->LOAD + 1;
 		n0 = HAL_GetTick();
 		t0 = tms - SysTick->VAL;
-		fu0 = n0 * 1000000 + (t0 * 1000000) / tms;
+		fu0 = n0 * 1000000 + (t0 * 1000000) / tms;  
 		if((pumpBcurrent - pumpBprevious) > timeignore && pumpBflag == false)
 		{
 			pumpBprevious = pumpBcurrent;
@@ -248,7 +248,7 @@ int main(void)
   while (1)
   {
 	current = HAL_GetTick();
-	if(((current - previous) > pulsedelay) && pumpstop == false) //10
+	if(((current - previous) > pulsedelay) && pumpstop == false)        // 1 tick about 1 ms
 	{
 		previous = current;
 		if(pumpAflag == true)
